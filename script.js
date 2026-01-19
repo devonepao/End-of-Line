@@ -179,13 +179,43 @@ function generateWeeksMatrix() {
     
     const weeksLived = calculateWeeksLived();
     const totalWeeks = calculateTotalWeeks();
+    const weeksPerYear = 52;
+    const totalYears = Math.ceil(totalWeeks / weeksPerYear);
     
-    for (let i = 0; i < totalWeeks; i++) {
-        const weekBox = document.createElement('div');
-        weekBox.className = 'week-box ' + (i < weeksLived ? 'lived' : 'remaining');
-        weekBox.title = `Week ${i + 1}`;
-        matrixContainer.appendChild(weekBox);
+    // Create a container for the matrix with labels
+    const matrixWrapper = document.createElement('div');
+    matrixWrapper.className = 'matrix-wrapper';
+    
+    // Create the grid container
+    const gridContainer = document.createElement('div');
+    gridContainer.className = 'weeks-grid';
+    
+    for (let year = 0; year < totalYears; year++) {
+        // Add decade label at the start of each row
+        const ageLabel = document.createElement('div');
+        ageLabel.className = 'age-label';
+        
+        // Only show labels for decades (10, 20, 30, etc.)
+        if ((year + 1) % 10 === 0) {
+            ageLabel.textContent = (year + 1).toString();
+        }
+        
+        gridContainer.appendChild(ageLabel);
+        
+        // Add weeks for this year
+        for (let week = 0; week < weeksPerYear; week++) {
+            const weekIndex = year * weeksPerYear + week;
+            if (weekIndex < totalWeeks) {
+                const weekBox = document.createElement('div');
+                weekBox.className = 'week-box ' + (weekIndex < weeksLived ? 'lived' : 'remaining');
+                weekBox.title = `Week ${weekIndex + 1} (Age ${year + 1})`;
+                gridContainer.appendChild(weekBox);
+            }
+        }
     }
+    
+    matrixWrapper.appendChild(gridContainer);
+    matrixContainer.appendChild(matrixWrapper);
 }
 
 // Generate share image for Instagram story
