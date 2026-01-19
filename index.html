@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>End of Line - Life Countdown</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>End of Line</h1>
+            <p class="subtitle">Make every week count</p>
+        </header>
+
+        <main>
+            <!-- Current Age Section -->
+            <section class="stats-card">
+                <h2>Current Age</h2>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <span class="stat-value" id="years">0</span>
+                        <span class="stat-label">Years</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value" id="months">0</span>
+                        <span class="stat-label">Months</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value" id="days">0</span>
+                        <span class="stat-label">Days</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Age in Weeks Section -->
+            <section class="stats-card">
+                <h2>Life Progress in Weeks</h2>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <span class="stat-value" id="currentWeeks">0</span>
+                        <span class="stat-label">Weeks Lived</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value" id="totalWeeks">0</span>
+                        <span class="stat-label">Total Weeks</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value" id="weeksLeft">0</span>
+                        <span class="stat-label">Weeks Remaining</span>
+                    </div>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressBar"></div>
+                </div>
+                <p class="progress-text" id="progressText">0%</p>
+            </section>
+
+            <!-- Days Left Section -->
+            <section class="stats-card">
+                <h2>Time Remaining</h2>
+                <div class="stats-grid">
+                    <div class="stat-item large">
+                        <span class="stat-value" id="daysLeft">0</span>
+                        <span class="stat-label">Days Left</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Countdown Timer Section -->
+            <section class="stats-card countdown-card">
+                <h2>Live Countdown</h2>
+                <div class="countdown-grid">
+                    <div class="countdown-item">
+                        <span class="countdown-value" id="hoursLeft">0</span>
+                        <span class="countdown-label">Hours</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-value" id="minutesLeft">0</span>
+                        <span class="countdown-label">Minutes</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-value" id="secondsLeft">0</span>
+                        <span class="countdown-label">Seconds</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Life in Weeks Matrix -->
+            <section class="stats-card matrix-card">
+                <h2>Life in Weeks</h2>
+                <p class="matrix-description">Each square represents one week of your life</p>
+                <div id="weeksMatrix" class="weeks-matrix"></div>
+                <div class="matrix-legend">
+                    <div class="legend-item">
+                        <span class="legend-box lived"></span>
+                        <span>Weeks Lived</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-box remaining"></span>
+                        <span>Weeks Remaining</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Update Settings Section -->
+            <section class="stats-card settings-card">
+                <h2>Update Your Information</h2>
+                <form id="settingsForm">
+                    <div class="form-group">
+                        <label for="birthDay">Day</label>
+                        <input type="number" id="birthDay" min="1" max="31" value="11" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="birthMonth">Month</label>
+                        <select id="birthMonth" required>
+                            <option value="0">January</option>
+                            <option value="1">February</option>
+                            <option value="2">March</option>
+                            <option value="3">April</option>
+                            <option value="4">May</option>
+                            <option value="5">June</option>
+                            <option value="6">July</option>
+                            <option value="7">August</option>
+                            <option value="8">September</option>
+                            <option value="9">October</option>
+                            <option value="10">November</option>
+                            <option value="11" selected>December</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="birthYear">Year</label>
+                        <input type="number" id="birthYear" min="1900" max="2024" value="1995" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="lifeExpectancy">Life Expectancy</label>
+                        <input type="number" id="lifeExpectancy" min="1" max="150" value="80" required>
+                    </div>
+                    <button type="submit" class="btn-update">Update</button>
+                </form>
+            </section>
+
+            <!-- Share Section -->
+            <section class="stats-card share-card">
+                <h2>Share Your Stats</h2>
+                <p>Share your life countdown as an Instagram story</p>
+                <button id="shareBtn" class="btn-share">Generate Story Image</button>
+                <canvas id="shareCanvas" style="display: none;"></canvas>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2024 <a href="https://solvepao.com" target="_blank">solvepao research</a></p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
