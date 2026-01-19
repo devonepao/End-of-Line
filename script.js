@@ -196,7 +196,7 @@ function generateWeeksMatrix() {
         ageLabel.className = 'age-label';
         
         // Only show labels for decades (10, 20, 30, etc.)
-        if ((year + 1) % 10 === 0 && (year + 1) <= 90) {
+        if ((year + 1) % 10 === 0) {
             ageLabel.textContent = (year + 1).toString();
         }
         
@@ -208,7 +208,7 @@ function generateWeeksMatrix() {
             if (weekIndex < totalWeeks) {
                 const weekBox = document.createElement('div');
                 weekBox.className = 'week-box ' + (weekIndex < weeksLived ? 'lived' : 'remaining');
-                weekBox.title = `Week ${weekIndex + 1} (Age ${year})`;
+                weekBox.title = `Week ${weekIndex + 1} (Age ${year + 1})`;
                 gridContainer.appendChild(weekBox);
             }
         }
